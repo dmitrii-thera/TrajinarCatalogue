@@ -1,0 +1,221 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "run",
+			"command": "echo done",
+			"problemMatcher": [],
+			"detail": "run",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"CMake: build",
+				"run tests"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "run tests",
+			"command": "echo \"run tests\"",
+			"problemMatcher": [],
+			"detail": "run tests",
+			"dependsOrder": "parallel",
+			"dependsOn": [
+				// "test1",
+				// "bot1",
+				// "bot2",
+				// "bot3",
+				// "bot4"
+				// "t10.15.2.17",
+				// "t10.15.3.01"
+				// "t10.15.3.17",
+				// "s10_final_opentest_3",
+				"s12.4.7_ex1",
+				// "s12.4.7_ex2",
+				// "s12.4.7_ex3",
+				// "s12.4.7_ex4",
+				// "s12_final_opentest_1",
+				// "s12_final_opentest_2",
+				// "s12_final_opentest_3",
+			]
+		},
+		{
+			"type": "shell",
+			"label": "s12.4.7_ex1",
+			"command": [
+				"rm build/bin/*.err build/bin/*.diff;",
+				"build/bin/main < test/s12/s12.04.07_ex1.json 1>build/bin/s12.04.07_ex1.out 2>build/bin/s12.04.07_ex1.err;",
+				"diff build/bin/s12.04.07_ex1.out test/s12/s12.04.07_ex1.out --brief;",
+				"[ $? -ne 0 ] && code --diff test/s12/s12.04.07_ex1.out build/bin/s12.04.07_ex1.out || echo done;",
+				"diff build/bin/s12.04.07_ex1.out test/s12/s12.04.07_ex1.out 1>build/bin/s12.04.07_ex1.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "s12.4.7_ex1",
+		},
+		{
+			"type": "shell",
+			"label": "s12.4.7_ex2",
+			"command": [
+				"rm build/bin/*.err build/bin/*.diff;",
+				"build/bin/main < test/s12/s12.04.07_ex2.json 1>build/bin/s12.04.07_ex2.out 2>build/bin/s12.04.07_ex2.err;",
+				"diff build/bin/s12.04.07_ex2.out test/s12/s12.04.07_ex2.out --brief;",
+				"[ $? -ne 0 ] && code --diff test/s12/s12.04.07_ex2.out build/bin/s12.04.07_ex2.out || echo done;",
+				"diff build/bin/s12.04.07_ex2.out test/s12/s12.04.07_ex2.out 1>build/bin/s12.04.07_ex2.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "s12.4.7_ex2",
+		},
+		{
+			"type": "shell",
+			"label": "s12.4.7_ex3",
+			"command": [
+				"rm build/bin/*.err build/bin/*.diff;",
+				"build/bin/main < test/s12/s12.04.07_ex3.json 1>build/bin/s12.04.07_ex3.out 2>build/bin/s12.04.07_ex3.err;",
+				"diff build/bin/s12.04.07_ex3.out test/s12/s12.04.07_ex3.out --brief;",
+				"[ $? -ne 0 ] && code --diff test/s12/s12.04.07_ex3.out build/bin/s12.04.07_ex3.out || echo done;",
+				"diff build/bin/s12.04.07_ex3.out test/s12/s12.04.07_ex3.out 1>build/bin/s12.04.07_ex3.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "s12.4.7_ex3",
+		},
+		{
+			"type": "shell",
+			"label": "s12.4.7_ex4",
+			"command": [
+				"rm build/bin/*.err build/bin/*.diff;",
+				"build/bin/main < test/s12/s12.04.07_ex4.json 1>build/bin/s12.04.07_ex4.out 2>build/bin/s12.04.07_ex4.err;",
+				"diff build/bin/s12.04.07_ex4.out test/s12/s12.04.07_ex4.out --brief;",
+				"[ $? -ne 0 ] && code --diff test/s12/s12.04.07_ex4.out build/bin/s12.04.07_ex4.out || echo done;",
+				"diff build/bin/s12.04.07_ex4.out test/s12/s12.04.07_ex4.out 1>build/bin/s12.04.07_ex4.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "s12.4.7_ex4",
+		},
+		{
+			"type": "shell",
+			"label": "test1",
+			"command": "build/bin/main < test/in01.json 1>build/bin/out01.svg; code build/bin/out01.svg",
+			"problemMatcher": [],
+			"detail": "test 1 nonroundtrip two stops",
+		},
+		{
+			"type": "shell",
+			"label": "bot1",
+			"command": [
+				"build/bin/main < test/bot01.json 1>build/bin/bot01.svg 2>build/bin/bot01.err;",
+				"diff build/bin/bot01.svg test/bot01.out --brief;",
+				"code --diff build/bin/bot01.svg test/bot01.out;",
+				"diff build/bin/bot01.svg test/bot01.out 1>build/bin/bot01.diff",
+			],
+			"problemMatcher": [],
+			"detail": "bot 1",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "bot2",
+			"command": [
+				"build/bin/main < test/bot02.json 1>build/bin/bot02.svg 2>build/bin/bot02.err;",
+				"diff build/bin/bot02.svg test/bot02.out --brief;",
+				"code --diff build/bin/bot02.svg test/bot02.out;",
+				"diff build/bin/bot02.svg test/bot02.out 1>build/bin/bot02.diff",
+			],
+			"problemMatcher": [],
+			"detail": "bot 2",
+		},
+		{
+			"type": "shell",
+			"label": "bot3",
+			"command": [
+				"build/bin/main < test/bot03.json 1>build/bin/bot03.svg 2>build/bin/bot03.err;",
+				"diff build/bin/bot03.svg test/bot03.out --brief;",
+				"code --diff build/bin/bot03.svg test/bot03.out;",
+				"diff build/bin/bot03.svg test/bot03.out 1>build/bin/bot03.diff",
+			],
+			"problemMatcher": [],
+			"detail": "bot 3",
+		},
+		{
+			"type": "shell",
+			"label": "bot4",
+			"command": [
+				"build/bin/main < test/bot04.json 1>build/bin/bot04.svg 2>build/bin/bot04.err;",
+				"diff build/bin/bot04.svg test/bot04.out --brief;",
+				"code --diff build/bin/bot04.svg test/bot04.out;",
+				"diff build/bin/bot04.svg test/bot04.out 1>build/bin/bot04.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "bot 4",
+		},
+		{
+			"type": "shell",
+			"label": "t10.15.2.17",
+			"command": [
+				"build/bin/main < test/t10.15.2.17.json 1>build/bin/t10.15.2.17.svg 2>build/bin/t10.15.2.17.err;",
+				"diff build/bin/t10.15.2.17.svg test/t10.15.2.17.out --brief;",
+				"sed -i '2s/.*/<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" version=\"1.1\" height=\"450\" weight=\"650\">/' t10.15.2.17.out;",
+				"code --diff build/bin/t10.15.2.17.svg test/t10.15.2.17.out;",
+				"diff build/bin/t10.15.2.17.svg test/t10.15.2.17.out 1>build/bin/t10.15.2.17.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "bot 4",
+		},
+		{
+			"type": "shell",
+			"label": "t10.15.3.01",
+			"command": [
+				"build/bin/main < test/t10.15.3.01.json 1>build/bin/t10.15.3.01.out 2>build/bin/t10.15.3.01.err;",
+				"diff build/bin/t10.15.3.01.out test/t10.15.3.01.out --brief;",
+				"code --diff build/bin/t10.15.3.01.out test/t10.15.3.01.out;",
+				"diff build/bin/t10.15.3.01.out test/t10.15.3.01.out 1>build/bin/t10.15.3.01.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "t10.15.3.01",
+		},
+		{
+			"type": "shell",
+			"label": "t10.15.3.17",
+			"command": [
+				"build/bin/main < test/t10.15.2.17.json 1>build/bin/t10.15.3.17.out 2>build/bin/t10.15.3.17.err;",
+				"diff build/bin/t10.15.3.17.out test/t10.15.3.17.out --brief;",
+				"code --diff build/bin/t10.15.3.17.out test/t10.15.3.17.out;",
+				"diff build/bin/t10.15.3.17.out test/t10.15.3.17.out 1>build/bin/t10.15.3.17.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "t10.15.3.17",
+		},
+		{
+			"type": "shell",
+			"label": "s10_final_opentest_3",
+			"command": [
+				"build/bin/main < test/s10_final_opentest_3.json 1>build/bin/s10_final_opentest_3.out 2>build/bin/s10_final_opentest_3.err;",
+				"diff build/bin/s10_final_opentest_3.out test/s10_final_opentest_3_answer.json --brief;",
+				"code --diff build/bin/s10_final_opentest_3.out test/s10_final_opentest_3_answer.json;",
+				"diff build/bin/s10_final_opentest_3.out test/s10_final_opentest_3_answer.json 1>build/bin/s10_final_opentest_3.diff;",
+			],
+			"problemMatcher": [],
+			"detail": "s10_final_opentest_3",
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		}
+	]
+}

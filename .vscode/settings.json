@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#f5f5f56c",
+        "tab.inactiveBackground": "#c4b7d745",
+    }
+} 
