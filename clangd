@@ -1,0 +1,50 @@
+# ignored if home/.config/clangd/clang.yaml exists
+CompileFlags:
+  Add: -std=c++20
+  Compiler: clang++
+Index:
+  StandardLibrary: No
+# If:
+#   PathExclude: build/.*
+Diagnostics:
+  Suppress:
+    sign-conversion
+  ClangTidy:
+    Add: ["cert-*",
+      "cppcorequidelines-*",
+      "clang-analyzer-*",
+      "google-*",
+      "hicpp-*",
+      "llvm-*",
+      "misc-*",
+      "modernize-*",
+      "performance-*",
+      "portability-*",
+      "readability-*",
+      "clang-diagnostic-*" ]
+    Remove: [
+      "google-build-using-namespace",
+      "google-global-names-in-headers",
+      hicpp-use-emplace,
+      hicpp-no-array-decay,
+      "llvm-header-guard",
+      "misc-definitions-in-headers",
+      "misc-unused-parameters",
+      misc-non-private-member-variables-in-classes,
+      "readability-identifier-length",
+      readability-magic-numbers,
+      readability-implicit-bool-conversion,
+      "modernize-use-nodiscard",
+      modernize-use-trailing-return-type,
+      modernize-use-emplace,
+    ]
+    # CheckOptions:
+    #   misc-non-private-member-variables-in-classes: IgnorePublicMemberVariables
+InlayHints:
+  BlockEnd: No
+  Designators: Yes
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+  TypeNameLimit: 0
+# IgnoreClassesWithAllMemberVariablesBeingPublic: true
